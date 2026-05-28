@@ -1,0 +1,37 @@
+# GitHub Actions - Streamlit Cloud 部署配置
+
+name: Deploy to Streamlit Cloud
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Deploy to Streamlit Cloud
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-files
+      
+      - name: Deploy
+        run: |
+          # 部署逻辑由Streamlit Cloud自动处理
+          echo "Deploying to Streamlit Cloud..."
+          # 请在 https://share.streamlit.io 手动关联仓库
