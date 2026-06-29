@@ -414,18 +414,18 @@ def get_llm():
     try:
         from langchain_openai import ChatOpenAI
         
-        if DASHSCOPE_API_KEY:
-            return ChatOpenAI(
-                api_key=DASHSCOPE_API_KEY,
-                base_url=DASHSCOPE_API_BASE,
-                model=DASHSCOPE_MODEL,
-                temperature=0.7
-            )
-        elif DEEPSEEK_API_KEY:
+        if DEEPSEEK_API_KEY:
             return ChatOpenAI(
                 api_key=DEEPSEEK_API_KEY,
                 base_url=DEEPSEEK_API_BASE,
                 model=DEEPSEEK_MODEL,
+                temperature=0.7
+            )
+        elif DASHSCOPE_API_KEY:
+            return ChatOpenAI(
+                api_key=DASHSCOPE_API_KEY,
+                base_url=DASHSCOPE_API_BASE,
+                model=DASHSCOPE_MODEL,
                 temperature=0.7
             )
         elif OPENAI_API_KEY:
